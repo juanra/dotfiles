@@ -5,7 +5,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bullet-train"
+# ZSH_THEME="bullet-train"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,11 +51,11 @@ ZSH_THEME="bullet-train"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx battery brew forklift git adb node nvm npm meteor zsh-completions)
+plugins=(adb battery brew colored-man-pages colorize docker docker-compose forklift git meteor node npm nvm osx sudo zsh-completions zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/usr/local/bin:/usr/sbin:/usr/bin:/bin:/sbin:/usr/local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 ### Added for Android SDK adb
@@ -62,10 +64,22 @@ export PATH=$HOME/Development/Frameworks/Android/sdk/platform-tools:$PATH
 ### Added for Android SDK Tools
 export PATH=$HOME/Development/Frameworks/Android/sdk/tools:$PATH
 
-#Node Version Manager
-export NVM_DIR="/Volumes/Data/Home/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Node Version Manager
+#export NVM_DIR="/Volumes/Data/Home/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+
+### Adding an alias to Development folder
+alias dev="cd ~/Development/Git\ Repositories/"
+alias devw="cd ~/Development/Git\ Repositories/Web/projects/"
+alias devm="cd ~/Development/Git\ Repositories/Mobile"
+
+### Docker
+# Kill all running containers.
+alias dkill='docker kill $(docker ps -q)'
+
+# Delete all stopped containers.
+alias dclean='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
 
 source $ZSH/oh-my-zsh.sh
 
