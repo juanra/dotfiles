@@ -28,7 +28,7 @@ printf "${BLUE}Hi there!, get ready to install and setup new super shell (ZSH).$
 REQUIRED_PACKAGES="git zsh"
 
 # Let's update our package repositories first
-printf "${BLUE}First, let's update our package repositories first...${NORMAL}\n"
+printf "${BLUE}First, let's update our package repositories...${NORMAL}\n"
 #apt-get update
 
 printf "${BLUE}Now, let's check if the required packages are already installed...${NORMAL}\n"
@@ -66,10 +66,10 @@ git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-m
 printf "${BLUE}Installing zsh-syntax-highlighting plugin...${NORMAL}\n"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-printf "${BLUE}Awesome! the last thing is to activate our favorite theme 'Pure' and some plugins...${NORMAL}\n"
+printf "${BLUE}Awesome! the last thing to do is to activate our favorite theme and plugins...${NORMAL}\n"
 THEME_TO_ACTIVATE="refined"
-PLUGINS_TO_ACTIVATE_MAC="adb battery brew colored-man-pages colorize docker docker-compose forklift git meteor node npm nvm osx sudo zsh-completions zsh-syntax-highlighting"
-PLUGINS_TO_ACTIVATE_LINUX="colored-man-pages colorize docker docker-compose git meteor node npm sudo zsh-completions zsh-syntax-highlighting"
+PLUGINS_TO_ACTIVATE_MAC="adb battery brew colored-man-pages colorize docker docker-compose forklift git meteor node npm nvm osx sublime sudo zsh-completions zsh-syntax-highlighting"
+PLUGINS_TO_ACTIVATE_LINUX="colored-man-pages colorize docker docker-compose git meteor node npm sudo ubuntu zsh-completions zsh-syntax-highlighting"
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
@@ -80,3 +80,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   sed -i -e "s/\(ZSH_THEME=\).*/\1\"$THEME_TO_ACTIVATE\"/" .zshrc
   sed -i -e "s/\(plugins=\).*/\1($PLUGINS_TO_ACTIVATE_MAC)/" .zshrc
 fi
+printf "${GREEN}...and you are up and ready! Installation completed.

@@ -51,7 +51,7 @@ ZSH_THEME="refined"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(adb battery brew colored-man-pages colorize docker docker-compose forklift git meteor node npm nvm osx sudo zsh-completions zsh-syntax-highlighting)
+plugins=(adb battery brew colored-man-pages colorize docker docker-compose forklift git meteor node npm nvm osx rsync sublime sudo zsh-completions zsh-syntax-highlighting)
 
 # User configuration
 
