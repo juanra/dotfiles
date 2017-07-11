@@ -64,6 +64,9 @@ export PATH=$HOME/Development/Frameworks/Android/sdk/platform-tools:$PATH
 ### Added for Android SDK Tools
 export PATH=$HOME/Development/Frameworks/Android/sdk/tools:$PATH
 
+### Added for PHP Composer
+export PATH=$HOME/.composer/vendor/bin:$PATH
+
 # Node Version Manager
 #export NVM_DIR="/Volumes/Data/Home/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
