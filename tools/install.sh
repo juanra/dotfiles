@@ -64,12 +64,14 @@ git clone https://github.com/sindresorhus/pure.git ${ZSH_CUSTOM:-~/.oh-my-zsh/cu
 printf "${BLUE}Installing zsh-completions plugin...${NORMAL}\n"
 git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
 printf "${BLUE}Installing zsh-syntax-highlighting plugin...${NORMAL}\n"
+git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+printf "${BLUE}Installing zsh-syntax-highlighting plugin...${NORMAL}\n"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 printf "${BLUE}Awesome! the last thing to do is to activate our favorite theme and plugins...${NORMAL}\n"
 THEME_TO_ACTIVATE="refined"
-PLUGINS_TO_ACTIVATE_MAC="adb battery brew colored-man-pages colorize docker docker-compose forklift git meteor node npm nvm osx sublime sudo zsh-completions zsh-syntax-highlighting"
-PLUGINS_TO_ACTIVATE_LINUX="colored-man-pages colorize docker docker-compose git meteor node npm sudo ubuntu zsh-completions zsh-syntax-highlighting"
+PLUGINS_TO_ACTIVATE_MAC="adb battery brew colored-man-pages colorize docker docker-compose forklift git meteor node npm nvm osx sublime sudo zsh-autosuggestions zsh-completions zsh-syntax-highlighting"
+PLUGINS_TO_ACTIVATE_LINUX="colored-man-pages colorize docker docker-compose git meteor node npm sudo ubuntu zsh-autosuggestions zsh-completions zsh-syntax-highlighting"
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
