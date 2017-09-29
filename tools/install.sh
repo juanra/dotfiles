@@ -31,14 +31,16 @@ printf "${BLUE}First, let's update our package repositories...${NORMAL}\n"
 install_packages()
 {
     ## Prompt the user 
-    read -p "Do you want to install missing packages? [Y/n]: " answer
+    printf "${RED}The following packages are missing: ${NORMAL}\n"
+    printf "${RED}    -> %s${NORMAL}\n" ${REQUIRED_PACKAGES[@]}
+    read -p 'Do you want to install missing packages? [Y/n]: ' answer
     ## Set the default value if no answer was given
     answer=${answer:Y}
     ## If the answer matches y or Y, install
-    [[ $answer =~ [Yy] ]] && apt-get install ${REQUIRED_PACKAGES[@]}
+    [[ $answer =~ [Yy] ]] && apt-get -y install ${REQUIRED_PACKAGES[@]}
 }
 
-REQUIRED_PACKAGES=("git" "zsh")
+REQUIRED_PACKAGES=("git-core" "zsh")
 
 printf "${BLUE}Now, let's check if the required packages are already installed...${NORMAL}\n"
 ## Run the install_packages function if any of the packages are missing
@@ -56,7 +58,7 @@ if [ -d "$ZSH" ]; then
  printf "${YELLOW}You already have Oh My Zsh installed.${NORMAL}\n"
  printf "You'll need to remove $ZSH if you want to re-install.\n"
 else
-  printf "${BLUE}Boo!, 'Oh My ZSH!' is not installed.  Let's do it right now...${NORMAL}\n"
+  printf "${RED}Boo!, 'Oh My ZSH!' is not installed.  Let's do it right now...${NORMAL}\n"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
@@ -88,4 +90,19 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   sed -i -e "s/\(ZSH_THEME=\).*/\1\"$THEME_TO_ACTIVATE\"/" .zshrc
   sed -i -e "s/\(plugins=\).*/\1($PLUGINS_TO_ACTIVATE_MAC)/" .zshrc
 fi
-printf "${GREEN}...and you are up and ready! Installation completed.
+printf "${GREEN}...and you are up and ready! Installation completed.${NORMAL}\n"
+
+# If this user's login shell is not already "zsh", attempt to switch.
+TEST_CURRENT_SHELL=$(expr "$SHELL" : '.*/\(.*\)')
+if [ "$TEST_CURRENT_SHELL" != "zsh" ]; then
+  # If this platform provides a "chsh" command (not Cygwin), do it, man!
+  if hash chsh >/dev/null 2>&1; then
+    printf "${BLUE}Time to change your default shell to zsh!${NORMAL}\n"
+    chsh -s $(grep /zsh$ /etc/shells | tail -1)
+  # Else, suggest the user do so manually.
+  else
+    printf "I can't change your shell automatically because this system does not have chsh.\n"
+    printf "${BLUE}Please manually change your default shell to zsh!${NORMAL}\n"
+  fi
+fi
+env zsh
