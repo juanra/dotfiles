@@ -24,22 +24,28 @@ fi
 
 printf "${BLUE}Hi there!, get ready to install and setup new super shell (ZSH).${NORMAL}\n"
 
-# Set required packages
-REQUIRED_PACKAGES="git zsh"
-
 # Let's update our package repositories first
 printf "${BLUE}First, let's update our package repositories...${NORMAL}\n"
-#apt-get update
+
+# Set required packages
+install_packages()
+{
+    ## Prompt the user 
+    read -p "Do you want to install missing packages? [Y/n]: " answer
+    ## Set the default value if no answer was given
+    answer=${answer:Y}
+    ## If the answer matches y or Y, install
+    [[ $answer =~ [Yy] ]] && apt-get install ${REQUIRED_PACKAGES[@]}
+}
+
+REQUIRED_PACKAGES=("git" "zsh")
 
 printf "${BLUE}Now, let's check if the required packages are already installed...${NORMAL}\n"
-for PACKAGE_NAME in $REQUIRED_PACKAGES; do
-  if [ dpkg -l $PACKAGE_NAME > /dev/null 2>&1 ]; then
-    printf "${BLUE}Nope, $PACKAGE_NAME is not installed, so let's install it!${NORMAL}\n"
-    sudo apt-get install -y $PACKAGE_NAME
-  else
-    printf "${BLUE}Yep, $PACKAGE_NAME is already installed.${NORMAL}\n"
-  fi
-done
+## Run the install_packages function if any of the packages are missing
+dpkg -s "${REQUIRED_PACKAGES[@]}" >/dev/null 2>&1 || install_packages
+
+
+REQUIRED_PACKAGES="git zsh"
 
 printf "${BLUE}Time to check if 'Oh My ZSH!' is installed...${NORMAL}\n"
 if [ ! -n "$ZSH" ]; then
