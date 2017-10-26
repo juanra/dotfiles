@@ -113,3 +113,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+alias ufwks="echo 'Updating brew...' && brew update && echo 'Updating node...' && sudo n latest && echo 'Updating npm...' && sudo npm update -g"
