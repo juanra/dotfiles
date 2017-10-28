@@ -37,7 +37,7 @@ install_packages()
     ## Set the default value if no answer was given
     answer=${answer:Y}
     ## If the answer matches y or Y, install
-    [[ $answer =~ [Yy] ]] && apt-get -y install ${REQUIRED_PACKAGES[@]}
+    [[ $answer =~ [Yy] ]] && sudo apt-get -y install ${REQUIRED_PACKAGES[@]}
 }
 
 REQUIRED_PACKAGES=('git-core' 'zsh')
