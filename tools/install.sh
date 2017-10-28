@@ -40,7 +40,7 @@ install_packages()
     [[ $answer =~ [Yy] ]] && apt-get -y install ${REQUIRED_PACKAGES[@]}
 }
 
-REQUIRED_PACKAGES=("git-core" "zsh")
+REQUIRED_PACKAGES=('git-core' 'zsh')
 
 printf "${BLUE}Now, let's check if the required packages are already installed...${NORMAL}\n"
 ## Run the install_packages function if any of the packages are missing
