@@ -1,21 +1,29 @@
-Juanra Nunez dotfiles
+Jay dotfiles
 ========
 
-These are config files to set up a system the way I like it. I switched to ZSH shell + Oh My ZSH!
-
-I am running on Mac OS X, but the `tools/install.sh` script takes into consideration Linux environments to configure terminal shells on cloud servers, e.g. DigitalOcean, Amazon AWS, etc.
+A simple script to setup an awesome shell environment.
+Quickly install and setup zsh and oh-my-zsh (https://github.com/robbyrussell/oh-my-zsh) with
+* powerlevel10k theme (https://github.com/romkatv/powerlevel10k)
+* Nerd-Fonts (https://github.com/ryanoasis/nerd-fonts)
+* zsh-completions (https://github.com/zsh-users/zsh-completions)
+* zsh-autosuggestions (https://github.com/zsh-users/zsh-autosuggestions)
+* fast-syntax-highlighting (https://github.com/zdharma/fast-syntax-highlighting.git)
+* history-substring-search (https://github.com/zsh-users/zsh-history-substring-search)
+* fzf (https://github.com/junegunn/fzf)
+* k (https://github.com/supercrabtree/k)
+* marker (https://github.com/pindexis/marker)
+* todotxt (https://github.com/todotxt/todo.txt-cli)
 
 ## Installation
 
-Run the following commands to execute `tools/install.sh` script in your terminal:
+Run the following commands to execute `install.sh` script in your terminal:
 
 ```
-git clone git@github.com:juanra/dotfiles.git ~/.dotfiles
-chmod +x ~/.dotfiles/tools/install.sh
-. ~/.dotfiles/tools/install.sh
+git clone https://github.com/juanra/dotfiles.git
+cd dotfiles
+chmod +x install.sh
+./install.sh
 ```
-
-After installing Oh My ZSH!, use the `exit` command to continue the installation and setup of the .zshrc config file, and restart the terminal to see the effects.
 
 Feel free to customize the .zshrc file to match your preferences.
 
