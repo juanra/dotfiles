@@ -68,7 +68,33 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(adb battery brew colored-man-pages colorize docker docker-compose fast-syntax-highlighting forklift git meteor node npm nvm osx sublime sudo zsh-autosuggestions zsh-completions)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(adb battery brew colored-man-pages colorize docker docker-compose fast-syntax-highlighting forklift git meteor node npm nvm osx sublime sudo zsh-autosuggestions zsh-completions)
+plugins=(
+	adb 
+	battery 
+	brew 
+	colored-man-pages 
+	colorize 
+	docker 
+	docker-compose 
+	fast-syntax-highlighting 
+	forklift 
+	git
+	history-substring-search
+	k 
+	meteor 
+	node 
+	npm 
+	nvm 
+	osx
+	pip
+	python
+	sublime 
+	sudo 
+	systemd
+	ubuntu 
+	zsh-autosuggestions 
+	zsh-completions
+	)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +123,27 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Add to PATH to Install and run programs with "pip install --user"
+export PATH=$PATH:~/.local/bin
+
+NPM_PACKAGES="${HOME}/.npm"
+PATH="$NPM_PACKAGES/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPS="--extended"
+
+export MARKER_KEY_NEXT_PLACEHOLDER="\C-b"   #change maker key binding from Ctr+t to Ctr+b
+
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+export PATH=$PATH:~/.quickzsh/todo/bin    #usig alias doesn't properly work
+
+autoload -U compinit && compinit        # zsh-completions
+# autoload bashcompinit                 # bash completions
+# bashcompinit
+
+# CUSTOM ALIASES
 
 # Update frameworks
 alias ufwks="echo 'Updating brew...' && brew update && echo 'Updating node...' && sudo n latest && echo 'Updating npm...' && sudo npm update -g"

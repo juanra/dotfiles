@@ -1,4 +1,4 @@
-Jay dotfiles
+ZSH dotfiles
 ========
 
 A simple script to setup an awesome shell environment.
