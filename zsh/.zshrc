@@ -146,7 +146,7 @@ autoload -U compinit && compinit        # zsh-completions
 # CUSTOM ALIASES
 
 # Update frameworks
-alias ufwks="echo 'Updating brew...' && brew update && echo 'Updating node...' && sudo n latest && echo 'Updating npm...' && sudo npm update -g"
+alias update-fwks="echo 'Updating brew...' && brew update && echo 'Updating node...' && sudo n latest && echo 'Updating npm...' && sudo npm update -g"
 
 # exa as ls replacement
 alias l='exa --long --git --classify --header --group'
@@ -155,3 +155,70 @@ alias la='exa --long --git --all --classify --header --group'
 alias lt='exa --tree'
 alias ll='exa --long --git --classify --header --group'
 alias ldot='exa --long --git --list-dirs .*'
+
+# Get my IP
+alias myip="wget -qO- https://wtfismyip.com/text"	# quickly show external ip address
+
+# Other aliases
+alias x="exit"
+alias k="k -h"						# show human readable filesizes, in kb, mb etc
+
+# Update all git repos
+alias update-git-repos="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull --ff-only"
+
+# CUSTOM FUNCTIONS
+
+# cheat sheets (github.com/chubin/cheat.sh), find out how to use commands
+# example 'cheat tar'
+# for language specific question supply 2 args first for language, second as the question
+# eample: cheat python3 execute external program
+cheat() {
+    if [ "$2" ]; then
+        curl "https://cheat.sh/$1/$2+$3+$4+$5+$6+$7+$8+$9+$10"
+    else
+        curl "https://cheat.sh/$1"
+    fi
+}
+
+# Matrix screen saver! will run if you have installed "cmatrix"
+# TMOUT=900
+# TRAPALRM() { if command -v cmatrix &> /dev/null; then cmatrix -sb; fi }
+
+speedtest() {
+    curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -
+}
+
+dadjoke() {
+    curl https://icanhazdadjoke.com
+}
+
+# Find dictionary definition
+dict() {
+    if [ "$3" ]; then
+        curl "dict://dict.org/d:$1 $2 $3"
+    elif [ "$2" ]; then
+        curl "dict://dict.org/d:$1 $2"
+    else
+        curl "dict://dict.org/d:$1"
+    fi
+}
+
+# Find geo info from IP
+ipgeo() {
+    # Specify ip or your ip will be used
+    if [ "$1" ]; then
+        curl "http://api.db-ip.com/v2/free/$1"
+    else
+        curl "http://api.db-ip.com/v2/free/$(myip)"
+    fi
+}
+
+# Show covid-19 spread stats
+corona() {
+    # Specify country otherwise shows stats for all
+    if [ "$1" ]; then
+        curl "https://corona-stats.online/$1"
+    else
+        curl "https://corona-stats.online"
+    fi
+}

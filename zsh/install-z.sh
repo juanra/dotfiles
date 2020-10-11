@@ -10,13 +10,13 @@ WARNING='\033[1;33m'
 
 # Check if ZSH and dependencies are installed
 printf "${INFO}Hi there!, I will check if ZSH and its dependencies are installed ${NOCOLOR}\n"
-if command -v zsh &> /dev/null && command -v git &> /dev/null && command -v wget &> /dev/null; then
+if command -v zsh &> /dev/null && command -v git &> /dev/null && command -v wget &> /dev/null && command -v coreutils &> /dev/null; then
     printf "ZSH and its dependencies are ${OK}already installed ${NOCOLOR}\n"
 else
-    if sudo apt install -y zsh git wget || sudo pacman -S zsh git wget || sudo dnf install -y zsh git wget || sudo yum install -y zsh git wget || brew install git zsh wget || pkg install git zsh wget ; then
-        printf "ZSH, WGET and GIT ${OK}Installed ${NOCOLOR}\n"
+    if sudo apt install -y zsh git wget coreutils || sudo pacman -S zsh git wget coreutils || sudo dnf install -y zsh git wget coreutils || sudo yum install -y zsh git wget coreutils || brew install git zsh wget coreutils || pkg install git zsh wget coreutils; then
+        printf "ZSH, GIT and WGET ${OK}Installed ${NOCOLOR}\n"
     else
-        printf "${ERROR}Failed to install required dependencies. ${NOCOLOR}Please manually install the following packages first, then try again: zsh git wget \n" && exit
+        printf "${ERROR}Failed to install required dependencies. ${NOCOLOR}Please manually install the following packages first, then try again: zsh git wget coreutils \n" && exit
     fi
 fi
 
@@ -137,7 +137,7 @@ fi
 if command -v exa &> /dev/null; then
     printf "EXA is ${OK}already installed ${NOCOLOR}\n"
 else
-    if sudo pacman -S exa || sudo dnf install -y exa || brew install exa; then
+    if sudo apt install -y exa || sudo pacman -S exa || sudo dnf install -y exa || brew install exa; then
         printf "${OK}EXA Installed ${NOCOLOR}\n"
     else
         printf "${ERROR}Failed to install EXA. ${NOCOLOR}Please try to manually install the package and try again \n" && exit
